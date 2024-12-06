@@ -6,8 +6,9 @@
 #   "seaborn",
 #   "matplotlib",
 #   "numpy",
-#   "scikit-learn"
-# ]
+#   "scikit-learn",
+#   "chardet"
+# ] 
 # ///
 
 import os
@@ -19,6 +20,7 @@ import numpy as np
 from sklearn.cluster import KMeans
 import httpx
 import time
+import chardet
 
 API_URL = "https://aiproxy.sanand.workers.dev/openai/v1/chat/completions"
 AIPROXY_TOKEN = os.getenv("AIPROXY_TOKEN")
@@ -29,7 +31,10 @@ if not AIPROXY_TOKEN:
 
 def load_data(file_path):
     try:
-        data = pd.read_csv(file_path)
+        with open(file_path, 'rb') as f:
+            result = chardet.detect(f.read())  # Detect the encoding
+        encoding = result['encoding']
+        data = pd.read_csv(file_path, encoding=encoding)  # Use detected encoding
         return data
     except Exception as e:
         print(f"Error loading file {file_path}: {e}")
