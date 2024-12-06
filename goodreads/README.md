@@ -1,5 +1,3 @@
----
-
 **Once Upon a Dataset: The Tale of 10,000 Books**
 
 Imagine a vast library, a treasure trove of literary wonders, holding 10,000 books, each with its own story waiting to be told. Our dataset, a digital reflection of this library, allows us to explore and discover the tales hidden within. Let�s embark on this journey together, diving into the pages of data and uncovering the fascinating insights that lie beneath the surface!
